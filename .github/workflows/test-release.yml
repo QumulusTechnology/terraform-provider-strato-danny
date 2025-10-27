@@ -31,13 +31,13 @@ jobs:
           fetch-depth: 0
 
       - name: Set up Go
-        uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5.5.0
+        uses: actions/setup-go@44694675825211faa026b3c33043df3e48a5fa00 # v6.0.0
         with:
           go-version-file: 'go.mod'
           cache: true
 
       - name: Fetch GPG keys from Vault
-        uses: QumulusTechnology/vault-setup-action@v2
+        uses: QumulusTechnology/vault-setup-action@v3
         with:
           aws_account_data: ${{ secrets.AWS_ACCOUNT_DATA }}
           vault_addr: ${{ secrets.VAULT_ADDR }}
@@ -148,7 +148,7 @@ jobs:
           fi
 
       - name: Upload test artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: always()
         with:
           name: test-release-artifacts
